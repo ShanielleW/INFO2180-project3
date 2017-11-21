@@ -22,14 +22,14 @@
     <div id="main">
     <div class="header">
       <img id="regis_img" src="http://greatplaces2020.org/wp-content/uploads/2014/11/banner3.png"></img>
-      <div class="bottom-right"><h1>Sign Up</h1></div>
+      <div class="bottom-right"><h1></h1></div>
     </div>
 
     <div class="w-form">
 
       <form data-name="Personal Information" id="wf-form" name="wf-form" action = ".php" method = "POST">
         <fieldset>
-          <legend><h2>Personal Information</h2></legend>
+          <legend><h2>Sign Up Information</h2></legend>
           <label for="firstname">First Name:</label>
           <input class="w-input" data-name="Name" id="fname" maxlength="256" name="fname" type="text" required placeholder="Enter your first name">
           <label for="lastname">Last Name:</label>
@@ -41,6 +41,8 @@
           </label>
           <label for="email">Email Address:</label>
           <input class="w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="name@domain.com" required type="email">
+          <label for="password">Password:</label>
+          <input class="w-input" data-name="Password" id="email" maxlength="20" name="password" placeholder="XXXXXXXXX" required type="password">
           <label for="cell">Cell:</label>
           <input type="tel" name="cell" id="cell" required placeholder="(XXX)-XXX-XXXX" />
         </fieldset><br>
