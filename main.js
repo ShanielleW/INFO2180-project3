@@ -12,7 +12,7 @@ $(document).ready(function(){
 			if (this.readystatechange == 4)
 				if(this.status==200){
 					//get homepage for user
-					var info = "cheapomail.php?mail=true";
+					var info = "cheapo.php?mail=true";
 					$.ajax(link,{
 						method: 'GET'
 					}).done(function(mails){
@@ -21,7 +21,7 @@ $(document).ready(function(){
 				}
 		}
 	});
-	XMLhttp.open("POST", "cheapomail.php", true);
+	XMLhttp.open("POST", "cheapo.php", true);
     XMLhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    XMLhttp.send(dat);
+    XMLhttp.send(urlInfo);
 });
