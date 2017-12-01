@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 //Start session
 session_start();
@@ -7,10 +7,8 @@ $username = "username";
 $password = '';
 $dbname = 'cheapomail';
 
-
-
 try{
-$conn = new PDO($mysql:servername=$servername;dbname=$dbname, $username, $password);
+    $conn = new PDO($mysql:servername=$servername;dbname=$dbname, $username, $password);
 }
 catch(PDOException $e){
   echo $e;
@@ -27,13 +25,45 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $loginpassword = sha1($_POST['loginpassword']);
 
   //indicate logout
-  $lgout = $_POST["logout"];
+  $logout = $_POST["logout"];
 
-  if(isset($u_name) && isset($pword) && isset($f_name) && ($l_name)){
-    $sql = "INSERT INTO "
+  //indicate read messages
+  $readID = $_POST["read_id"];
+
+  //logging out
+  if ($lgout="true"){
+    session_unset();
+    session_destroy();
   }
-}
 
+  //Sign up
+  if(isset($username) && isset($password) && isset($first_name) && ($last_name)){
+    $sql = "INSERT INTO users(firstname, lastname, username, password) VALUES('$f_name', '$l_name', '$u_name', '$pword');";
+    $connect->exec($sql);
+
+    echo 'User added and can now use CheapoMail.';
+  }
+  //login
+  if(isset($username) && isset($password)){
+    $sql = "SELECT * FROM Users WHERE username = '$loginusername' AND password = '$loginpasswordpword';";
+    $stmt = $connect->query($sql);
+    $res = $stmt->fetch();
+
+    if($res != null){
+        $_SESSION["username"] = $res["username"];
+        $_SESSION["userID"] = $res["ID"];
+        echo "User found";
+    }
+    else{
+        echo "User not found. Search Again.";
+    }
+  }
+  //Messages read
+  if(isset($user_id)){
+    c
+    $sql = "INSERT INTO message_read(read_id,message_id) VALUES('$readID','')"
+    $connect->exec($sql);
+  }
 
 
 ?>
