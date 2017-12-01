@@ -1,0 +1,54 @@
+button
+{
+	width:100px;
+	margin:25;
+}
+a
+{
+	margin:25;
+}
+header
+{
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(mail.jpg);
+	height:110vh;
+	background-size: cover;
+	background-position: center;
+	gradient()
+
+}
+.navigation{
+	float:right;
+	list-style: none;
+	margin-top: 30px;
+}
+.navigation li{
+
+	display: inline-block;
+	}
+.navigation li a{
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: 'roboto',sans-serif;
+	font-size:20px;
+	color:white;
+}
+.navigation li.effects a{
+	border:1px solid white;
+}
+.navigation li a:hover
+{
+	border: 1px solid white;
+}
+.logo img{
+	width:250px;
+	height:auto;
+	float:left;
+}
+body{
+	font-family: monospace;
+
+}
+.row{
+	max-width:1200px;
+	margin:auto;
+}
