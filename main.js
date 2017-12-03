@@ -55,5 +55,25 @@ $(document).ready(function(){
         });
     }
 
-
+    if ($(this).attr("href") == "home.html"){
+        $("#logout").on('click', function(event){
+            
+        
+            var XMLhttp = new XMLHttpRequest();
+            
+            var info ="logout=true";
+        
+            XMLhttp.onreadystatechange = function() {
+                if (this.readyState == 4){
+                    if (this.status == 200) {
+                        $("#main").load("index.html");
+                    }
+                }
+            };
+        
+            XMLhttp.open("POST", "cheapo.php", true);
+            XMLhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            XMLhttp.send(info);
+        }
+    }    
 });
