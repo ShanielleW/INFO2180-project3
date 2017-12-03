@@ -12,16 +12,48 @@ $(document).ready(function(){
 			if (this.readystatechange == 4)
 				if(this.status==200){
 					//get homepage for user
-					var info = "cheapo.php?mail=true";
-					$.ajax(link,{
-						method: 'GET'
-					}).done(function(mails){
-						$("#main").html(mails); //changes the main area to load new html 
-					})
+					if (XMLhttp.responseText == "User Found"){
+						$("#main").load("home.html")
+					} else{
+						$("#status").text("Username/Password incorrect!")
+					}
+				} else{
+					$("#status").text("Error: unknown.")
 				}
 		}
 	});
 	XMLhttp.open("POST", "cheapo.php", true);
     XMLhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     XMLhttp.send(urlInfo);
+
+    function read(divID, messageID){
+        
+        var info = "read_id="+messageID;
+        var aXMLhttp = new XMLHttpRequest();
+        
+        aXMLhttp.onreadystatechange = function() {
+            if (this.readyState == 4){
+                if (this.status == 200) {
+                    if (aXMLhttp.responseText == "Read"){
+                        $(divID).addClass("read");
+                    }
+                }
+            }
+        };
+        
+        aXMLhttp.open("POST", "cheapo.php", true);
+        aXMLhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        aXMLhttp.send(info);
+    }
+
+    function fetch(){
+        var link = 'cheapo.php?mail=true';
+        $.ajax(link,{ method: 'GET' }).done(function(result){
+            $("#msglist").html(result); 
+        }).fail(function(){
+            $("#msglist").html("<p>Error: Unknown</p>");
+        });
+    }
+
+
 });
